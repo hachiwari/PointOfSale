@@ -41,12 +41,7 @@ public class Product implements Comparable<Product> {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "barCode=" + barCode +
-                ", name='" + name + '\'' +
-                ", amount=" + price.getAmount() +
-                ", currency=" + price.getCurrency() +
-                '}';
+        return String.format("%-15s\t%s", getName(), getPrice().toString());
     }
 
     @Override

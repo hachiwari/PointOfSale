@@ -8,6 +8,10 @@ public class Price implements Comparable<Price> {
     private String currency;
 
     public Price(double amount, String currency){
+        if (amount < 0) {
+            throw new IllegalArgumentException(String.format("Illegal amount %.2f.", amount));
+        }
+
         this.amount = amount;
         this.currency = currency;
     }
@@ -22,7 +26,7 @@ public class Price implements Comparable<Price> {
 
     /**
      * Returns currency of the price
-     * @return
+     * @return currency
      */
     public String getCurrency() {
         return currency;
@@ -30,7 +34,7 @@ public class Price implements Comparable<Price> {
 
     @Override
     public String toString() {
-        return amount + " " + currency.toUpperCase();
+        return String.format("%.2f %s", amount, currency.toUpperCase());
     }
 
     @Override

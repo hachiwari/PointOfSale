@@ -8,11 +8,11 @@ import java.util.LinkedList;
  */
 public class PointOfSale {
 
-    public static ProductManager productManager = new ProductManager();
-    private LinkedList<Product> order = new LinkedList<>();
+    private final ProductManager productManager = new ProductManager();
+    private final LinkedList<Product> order = new LinkedList<>();
 
     /**
-     * Add new product to the bill
+     * Add new product to the order
      * @param barCode bar-code of the product
      * @return product
      */
@@ -41,9 +41,9 @@ public class PointOfSale {
         StringBuilder result = new StringBuilder();
 
         for(Product p : order) {
-            result.append(String.format("%s\t\t%.2f %s\n", p.getName(), p.getPrice().getAmount(), p.getPrice().getCurrency()));
+            result.append(String.format("%-15s\t%.2f %s\n", p.getName(), p.getPrice().getAmount(), p.getPrice().getCurrency()));
         }
-        result.append(String.format("Total sum:\t\t%.2f", getOrderValue()));
+        result.append(String.format("%-15s\t%.2f", "Total sum:", getOrderValue()));
         return result.toString();
     }
 }

@@ -10,14 +10,14 @@ import java.util.Scanner;
  */
 public class App {
 
-    private PointOfSale pointOfSale = new PointOfSale();
+    private final PointOfSale pointOfSale = new PointOfSale();
 
     /**
      * Run point of sale application
      */
     private void run() {
         Scanner scanner = new Scanner(System.in);
-        String enterLine = "";
+        String enterLine;
         Boolean exit = false;
 
         do {
@@ -47,7 +47,7 @@ public class App {
 
         try {
             if ((product = pointOfSale.addProduct(Integer.parseInt(enterBarCode))) != null) {
-                System.out.println(product.getName() + " " + product.getPrice().toString());
+                System.out.println(product.toString());
             } else {
                 System.out.println("Product not found");
             }

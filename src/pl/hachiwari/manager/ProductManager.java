@@ -4,11 +4,9 @@ import pl.hachiwari.model.Price;
 import pl.hachiwari.model.Product;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.ListIterator;
 import java.util.StringTokenizer;
 
 /**
@@ -16,7 +14,7 @@ import java.util.StringTokenizer;
  */
 public class ProductManager {
 
-    public static LinkedList<Product> productList = new LinkedList<>();
+    private final LinkedList<Product> productList = new LinkedList<>();
 
     public ProductManager() {
         initProduct();
@@ -63,11 +61,10 @@ public class ProductManager {
      * @return product
      */
     public Product getProduct(int barCode) {
-        Product product = null;
-        ListIterator<Product> productIterator  = productList.listIterator();
+        Product product;
 
-        while(productIterator.hasNext()) {
-            product = productIterator.next();
+        for (Product aProductList : productList) {
+            product = aProductList;
             if (product.getBarCode() == barCode) {
                 return product;
             }
