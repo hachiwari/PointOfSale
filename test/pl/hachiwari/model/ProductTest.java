@@ -1,3 +1,4 @@
+package pl.hachiwari.model;
 
 import org.junit.Test;
 import pl.hachiwari.model.Product;

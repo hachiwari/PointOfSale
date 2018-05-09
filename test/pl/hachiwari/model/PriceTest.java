@@ -1,6 +1,5 @@
-package pl.hachiwari.test;
+package pl.hachiwari.model;
 
-import pl.hachiwari.model.Price;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
