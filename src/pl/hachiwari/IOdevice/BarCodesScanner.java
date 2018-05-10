@@ -63,7 +63,7 @@ public class BarCodesScanner {
     }
 
     /**
-     * Show bill with total sum
+     * Show order with total sum
      */
     private void exit() {
         printer.println(pointOfSale.toString());

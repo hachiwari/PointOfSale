@@ -28,6 +28,10 @@ public class PointOfSale {
         return orderValue;
     }
 
+    /**
+     * Retuns order with all product added
+     * @return order
+     */
     LinkedList<Product> getOrder() {
         return order;
     }
