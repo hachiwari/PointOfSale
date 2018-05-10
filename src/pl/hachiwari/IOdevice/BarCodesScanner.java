@@ -1,4 +1,4 @@
-package pl.hachiwari;
+package pl.hachiwari.IOdevice;
 
 import pl.hachiwari.manager.PointOfSale;
 import pl.hachiwari.manager.ProductManager;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * @author Tomasz Kurek
  */
-class App {
+public class BarCodesScanner {
 
     private final ProductManager productManager = new ProductManager();
     private final PointOfSale pointOfSale = new PointOfSale();
@@ -17,7 +17,7 @@ class App {
     /**
      * Run point of sale application
      */
-    private void run() {
+    public void run() {
         Scanner scanner = new Scanner(System.in);
         String enterLine;
         Boolean exit = false;
@@ -66,12 +66,4 @@ class App {
         System.out.println(pointOfSale.toString());
     }
 
-    /**
-     * Run app
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        App app = new App();
-        app.run();
-    }
 }
