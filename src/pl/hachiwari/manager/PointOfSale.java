@@ -15,11 +15,11 @@ public class PointOfSale {
      * @param product product
      */
     public void addProduct(Product product) {
-        order.add(product);
+        getOrder().add(product);
     }
 
     public double getOrderValue() {
-        return order.stream().mapToDouble(i -> i.getPrice().getAmount()).sum();
+        return getOrder().stream().mapToDouble(product -> product.getPrice().getAmount()).sum();
     }
 
     /**
@@ -34,7 +34,7 @@ public class PointOfSale {
     public String toString() {
         StringBuilder result = new StringBuilder();
 
-        for(Product p : order) {
+        for(Product p : getOrder()) {
             result.append(String.format("%-15s\t%.2f %s\n", p.getName(), p.getPrice().getAmount(), p.getPrice().getCurrency()));
         }
         result.append(String.format("%-15s\t%.2f", "Total sum:", getOrderValue()));
