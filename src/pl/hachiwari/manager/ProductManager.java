@@ -62,15 +62,6 @@ public class ProductManager {
      * @return product
      */
     public Product getProduct(int barCode) {
-        Product product;
-
-        for (Product aProductList : productList) {
-            product = aProductList;
-            if (product.getBarCode() == barCode) {
-                return product;
-            }
-        }
-
-        return null;
+        return productList.stream().filter(product -> product.getBarCode() == barCode).findAny().orElse(null);
     }
 }

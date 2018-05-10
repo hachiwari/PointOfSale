@@ -19,13 +19,7 @@ public class PointOfSale {
     }
 
     public double getOrderValue() {
-        double orderValue = 0;
-
-        for(Product p : order) {
-            orderValue += p.getPrice().getAmount();
-        }
-
-        return orderValue;
+        return order.stream().mapToDouble(i -> i.getPrice().getAmount()).sum();
     }
 
     /**
