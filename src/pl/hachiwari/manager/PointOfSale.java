@@ -18,7 +18,7 @@ public class PointOfSale {
         order.add(product);
     }
 
-    double getOrderValue() {
+    public double getOrderValue() {
         double orderValue = 0;
 
         for(Product p : order) {

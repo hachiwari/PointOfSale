@@ -11,6 +11,9 @@ import java.util.Scanner;
  */
 public class BarCodesScanner {
 
+    public static final LCDDisplay lcdDisplay = new LCDDisplay();
+    public static final Printer printer = new Printer();
+
     private final ProductManager productManager = new ProductManager();
     private final PointOfSale pointOfSale = new PointOfSale();
 
@@ -23,7 +26,7 @@ public class BarCodesScanner {
         Boolean exit = false;
 
         do {
-            System.out.print("Enter bar-code: ");
+            lcdDisplay.print("Enter bar-code: ");
             enterLine = scanner.nextLine();
 
             if (enterLine.equals("exit")) {
@@ -43,19 +46,19 @@ public class BarCodesScanner {
         Product product;
 
         if (enterBarCode.isEmpty()) {
-            System.out.println("Invalid bar-code");
+            lcdDisplay.println("Invalid bar-code");
             return;
         }
 
         try {
             if ((product = productManager.getProduct(Integer.parseInt(enterBarCode))) != null) {
                 pointOfSale.addProduct(product);
-                System.out.println(product.toString());
+                lcdDisplay.println(product.toString());
             } else {
-                System.out.println("Product not found");
+                lcdDisplay.println("Product not found");
             }
         } catch (NumberFormatException e) {
-            System.out.println("Invalid bar-code");
+            lcdDisplay.println("Invalid bar-code");
         }
     }
 
@@ -63,7 +66,8 @@ public class BarCodesScanner {
      * Show bill with total sum
      */
     private void exit() {
-        System.out.println(pointOfSale.toString());
+        printer.println(pointOfSale.toString());
+        lcdDisplay.println(String.format("%-15s\t%.2f", "Total sum:", pointOfSale.getOrderValue()));
     }
 
 }

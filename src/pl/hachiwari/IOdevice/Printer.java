@@ -8,6 +8,15 @@ public class Printer implements IODevice {
      */
     @Override
     public void print(String msg) {
-        System.out.println(msg);
+        System.out.print(String.format("[Printer]\n%s", msg));
+    }
+
+    /**
+     * Display message on LCD
+     * @param msg message
+     */
+    @Override
+    public void println(String msg) {
+        System.out.println(String.format("[Printer]\n%s", msg));
     }
 }
