@@ -8,25 +8,17 @@ import java.util.LinkedList;
  */
 public class PointOfSale {
 
-    private final ProductManager productManager = new ProductManager();
     private final LinkedList<Product> order = new LinkedList<>();
 
     /**
      * Add new product to the order
-     * @param barCode bar-code of the product
-     * @return product
+     * @param product product
      */
-    public Product addProduct(int barCode) {
-        Product product;
-
-        if ((product = productManager.getProduct(barCode)) != null) {
-            order.add(product);
-        }
-
-        return product;
+    public void addProduct(Product product) {
+        order.add(product);
     }
 
-    public double getOrderValue() {
+    double getOrderValue() {
         double orderValue = 0;
 
         for(Product p : order) {
@@ -34,6 +26,10 @@ public class PointOfSale {
         }
 
         return orderValue;
+    }
+
+    LinkedList<Product> getOrder() {
+        return order;
     }
 
     @Override

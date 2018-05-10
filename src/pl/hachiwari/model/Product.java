@@ -51,9 +51,7 @@ public class Product implements Comparable<Product> {
 
         Product product = (Product) o;
 
-        if (barCode != product.barCode) return false;
-        if (name != null ? !name.equals(product.name) : product.name != null) return false;
-        return price != null ? price.equals(product.price) : product.price == null;
+        return barCode == product.barCode && (name != null ? name.equals(product.name) : product.name == null) && (price != null ? price.equals(product.price) : product.price == null);
     }
 
     @Override

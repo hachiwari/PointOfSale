@@ -1,6 +1,7 @@
 package pl.hachiwari;
 
 import pl.hachiwari.manager.PointOfSale;
+import pl.hachiwari.manager.ProductManager;
 import pl.hachiwari.model.Product;
 
 import java.util.Scanner;
@@ -8,8 +9,9 @@ import java.util.Scanner;
 /**
  * @author Tomasz Kurek
  */
-public class App {
+class App {
 
+    private final ProductManager productManager = new ProductManager();
     private final PointOfSale pointOfSale = new PointOfSale();
 
     /**
@@ -46,7 +48,8 @@ public class App {
         }
 
         try {
-            if ((product = pointOfSale.addProduct(Integer.parseInt(enterBarCode))) != null) {
+            if ((product = productManager.getProduct(Integer.parseInt(enterBarCode))) != null) {
+                pointOfSale.addProduct(product);
                 System.out.println(product.toString());
             } else {
                 System.out.println("Product not found");

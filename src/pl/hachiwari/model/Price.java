@@ -44,8 +44,7 @@ public class Price implements Comparable<Price> {
 
         Price price = (Price) o;
 
-        if (Double.compare(price.amount, amount) != 0) return false;
-        return currency != null ? currency.equals(price.currency) : price.currency == null;
+        return Double.compare(price.amount, amount) == 0 && (currency != null ? currency.equals(price.currency) : price.currency == null);
     }
 
     @Override
