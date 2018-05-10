@@ -1,6 +1,5 @@
 package pl.hachiwari.IOdevice;
 
-public interface IODevice {
-
+interface IODevice {
     void print(String string);
 }

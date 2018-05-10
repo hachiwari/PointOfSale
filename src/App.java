@@ -1,6 +1,6 @@
 import pl.hachiwari.IOdevice.BarCodesScanner;
 
-public class App {
+class App {
 
     /**
      * Run app
