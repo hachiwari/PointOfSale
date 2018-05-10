@@ -1,3 +1,5 @@
+package pl.hachiwari;
+
 import pl.hachiwari.IOdevice.BarCodesScanner;
 
 class App {
