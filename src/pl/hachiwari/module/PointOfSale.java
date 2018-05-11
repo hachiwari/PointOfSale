@@ -45,8 +45,8 @@ public class PointOfSale {
     }
 
     public void destroy() {
-        BarCodesScanner a = (BarCodesScanner) ioDeviceManager.getInputDevice(IODeviceManager.SCANNER);
-        a.closeScanner();
+        BarCodesScanner barCodesScanner = (BarCodesScanner) ioDeviceManager.getInputDevice(IODeviceManager.SCANNER);
+        barCodesScanner.closeScanner();
     }
 
     private void checkBarCode(String inputBarCode) {
