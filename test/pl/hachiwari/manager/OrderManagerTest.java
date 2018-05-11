@@ -1,8 +1,8 @@
 package pl.hachiwari.manager;
 
+
 import org.junit.Before;
 import org.junit.Test;
-
 import pl.hachiwari.model.Price;
 import pl.hachiwari.model.Product;
 
@@ -10,17 +10,17 @@ import java.util.LinkedList;
 
 import static org.junit.Assert.*;
 
-public class PointOfSaleTest {
+public class OrderManagerTest {
 
     private static final double DELTA = 0.01;
 
-    private PointOfSale pointOfSale;
+    private OrderManager orderManager;
     private Product product;
 
     @Before
     public void setUp() {
         ProductManager productManager = new ProductManager();
-        pointOfSale = new PointOfSale();
+        orderManager = new OrderManager();
         product = productManager.getProduct(100);
     }
 
@@ -28,46 +28,46 @@ public class PointOfSaleTest {
     public void shouldAllowToAddItemToOrder() {
         LinkedList<Product> products = createOrder(product);
 
-        pointOfSale.addProduct(product);
-        assertEquals(products, pointOfSale.getOrder());
+        orderManager.addProduct(product);
+        assertEquals(products, orderManager.getOrder());
     }
 
     @Test
     public void shouldAllowToAddTheSameItemTwice() {
         LinkedList<Product> products = createOrder(product, product);
 
-        pointOfSale.addProduct(product);
-        pointOfSale.addProduct(product);
+        orderManager.addProduct(product);
+        orderManager.addProduct(product);
 
-        assertEquals(products, pointOfSale.getOrder());
+        assertEquals(products, orderManager.getOrder());
     }
 
     @Test
     public void shouldComputeOrderValue() {
-        pointOfSale.addProduct(product);
-        assertEquals(product.getPrice().getAmount(), pointOfSale.getOrderValue(), DELTA);
+        orderManager.addProduct(product);
+        assertEquals(product.getPrice().getAmount(), orderManager.getOrderValue(), DELTA);
     }
 
     @Test
     public void shouldPrintOrder() {
-        pointOfSale.addProduct(product);
+        orderManager.addProduct(product);
 
         String value = String.format("%-15s\t%.2f %s\n", product.getName(), product.getPrice().getAmount(), product.getPrice().getCurrency()) +
-                String.format("%-15s\t%.2f", "Total sum:", pointOfSale.getOrderValue());
+                String.format("%-15s\t%.2f\n", "Total sum:", orderManager.getOrderValue());
 
-        assertEquals(value, pointOfSale.toString());
+        assertEquals(value, orderManager.toString());
     }
 
     @Test
     public void shouldComputeOrderWithManyProductsValue() {
         Product candy = new Product(112, "Candy", new Price(1.0, "PLN"));
-        pointOfSale.addProduct(candy);
-        pointOfSale.addProduct(product);
-        pointOfSale.addProduct(product);
+        orderManager.addProduct(candy);
+        orderManager.addProduct(product);
+        orderManager.addProduct(product);
 
         double totalSum = candy.getPrice().getAmount() + product.getPrice().getAmount() * 2;
 
-        assertEquals(totalSum, pointOfSale.getOrderValue(), DELTA);
+        assertEquals(totalSum, orderManager.getOrderValue(), DELTA);
     }
 
     private static LinkedList<Product> createOrder(Object ... list) {

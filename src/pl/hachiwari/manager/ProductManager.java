@@ -1,6 +1,5 @@
 package pl.hachiwari.manager;
 
-import pl.hachiwari.IOdevice.BarCodesScanner;
 import pl.hachiwari.model.Price;
 import pl.hachiwari.model.Product;
 
@@ -45,7 +44,7 @@ public class ProductManager {
                 }
             }
         } catch (IOException e) {
-            BarCodesScanner.lcdDisplay.println(String.format("Error read products from database! [%s]", e.getMessage()));
+            e.printStackTrace();
         } finally {
             try {
                 if (bufferedReader != null)

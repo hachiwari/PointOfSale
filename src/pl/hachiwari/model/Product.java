@@ -41,7 +41,7 @@ public class Product implements Comparable<Product> {
 
     @Override
     public String toString() {
-        return String.format("%-15s\t%s", getName(), getPrice().toString());
+        return String.format("%-15s\t%s\n", getName(), getPrice().toString());
     }
 
     @Override
