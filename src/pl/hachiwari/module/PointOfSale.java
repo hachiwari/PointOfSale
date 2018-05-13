@@ -32,15 +32,14 @@ public class PointOfSale {
     public void start() {
         do {
             BarCodesScanner barCodesScanner = (BarCodesScanner) ioDeviceManager.getInputDevice(IODeviceManager.SCANNER);
-            String inputBarOcde = barCodesScanner.input();
+            String inputBarCode = barCodesScanner.input();
 
-            if (inputBarOcde.equals("exit")) {
+            if (inputBarCode.equals("exit")) {
                 exit = true;
                 exit();
             } else {
-                checkBarCode(inputBarOcde);
+                checkBarCode(inputBarCode);
             }
-
         } while(!exit);
     }
 
